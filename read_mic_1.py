@@ -77,7 +77,7 @@ def imprimir_frecuencias_detectadas(signal, samplerate):
     frecuencias_detectadas = freqs[peaks]
     frecuencias_detectadas = np.sort(frecuencias_detectadas)
     print("Frecuencias detectadas (Hz):")
-    time.sleep(0.3)
+    time.sleep(0.3) #*esto hace más fácil de ver la lista, es posible comentarla
     print(frecuencias_detectadas)
 
 def update_plot(frame):
@@ -109,10 +109,13 @@ def update_plot(frame):
     return lines
 
 try:
-    #print("Samplerate:", args.samplerate)
+    # Puedes forzar el samplerate aquí:
+    args.samplerate = 48000  #* <-- Fija manualmente el valor aquí
+
     if args.samplerate is None:
         device_info = sd.query_devices(args.device, 'input')
         args.samplerate = device_info['default_samplerate']
+    print(f"Samplerate usado: {args.samplerate}")  # Para verificar el valor
     length = int(args.window * args.samplerate / (1000 * args.downsample))
     plotdata = np.zeros((length, len(args.channels)))
 
