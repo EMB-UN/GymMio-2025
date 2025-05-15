@@ -77,7 +77,7 @@ def imprimir_frecuencias_detectadas(signal, samplerate):
     frecuencias_detectadas = freqs[peaks]
     frecuencias_detectadas = np.sort(frecuencias_detectadas)
     print("Frecuencias detectadas (Hz):")
-    #time.sleep(0.3)
+    time.sleep(0.3)
     print(frecuencias_detectadas)
 
 def update_plot(frame):
